@@ -1,51 +1,64 @@
-import {useState} from "react";
+import {useRef, useState} from "react";
+import "../css/Diary.css";
 
 const DiaryEditor = () => {
+    const authorInput = useRef();
+    const contentInput = useRef();
+
     const [state, setState] = useState({
         author:"",
         content:"",
         emotion:1,
     });
 
-    const [author,setAuthor] = useState("");
-    const [content,setContent] = useState("");
-
-    const handleChangeState = (e) => {
-        console.log(e.target.name);
-        console.log(e.target.value);
-
+    const handleChangeDiary = (e) => {
         setState({
             ...state,
             [e.target.name]: e.target.value,
         });
     }
 
-    const handelSubmit = () =>{
-        console.log(state);
+    const handleSubmit = () =>{
+        if (state.author.length < 1){
+            authorInput.current.focus();
+            
+            return;
+        }
+
+        if(state.author.length < 5){
+            contentInput.current.focus();
+            return;
+        }
         alert("저장 성공");
+        console.log(state)
     }
     return(
         <div className="DiaryEditor">
             <h2>오늘의 일기</h2>
             <div>
                 <input
+                ref={authorInput}
                 name="author"
+                type="text"
                 value={state.author}
-                onChange={handleChangeState}
+                onChange={handleChangeDiary}
                 />
                 <div>
                     <textarea
+                    ref={contentInput}
                     name="content"
+                    type="text"
                     value={state.content}
-                    onChange={handleChangeState}
+                    onChange={handleChangeDiary}
                     />
                 </div>
             </div>
             <div>
+                <span>오늘의 감정점수 : </span>
                 <select
                 name="emotion"
                 value={state.emotion}
-                onChange={handelSubmit}>
+                onChange={handleChangeDiary}>
                     <option value={1}>1</option>
                     <option value={2}>2</option>
                     <option value={3}>3</option>
@@ -53,6 +66,11 @@ const DiaryEditor = () => {
                     <option value={5}>5</option>
                 </select>
             </div>
+            <div>
+                <button onClick={handleSubmit}>저장하기</button>
+            </div>
         </div>
     )
 }
+
+export default DiaryEditor;
