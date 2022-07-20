@@ -16,27 +16,27 @@ const DiaryEditor = ({onCreate}) => {
             ...state,
             [e.target.name]: e.target.value,
         });
-    }
+    };
 
-    const handleSubmit = () =>{
-        if (state.author.length < 1){
-            authorInput.current.focus();
-            return;
+    const handleSubmit = () => {
+        if (state.author.length < 1) {
+          authorInput.current.focus();
+          return;
         }
-
-        if(state.author.length < 5){
-            contentInput.current.focus();
-            return;
+    
+        if (state.content.length < 5) {
+          contentInput.current.focus();
+          return;
         }
-
-        onCreate(state.author,state.content,state.emotion);
+    
+        onCreate(state.author, state.content, state.emotion);
         alert("저장 성공");
         setState({
-            author:"",
-            content:"",
-            emotion:1,
+          author: "",
+          content: "",
+          emotion: 1
         });
-    }
+      };
     return(
         <div className="DiaryEditor">
             <h2>오늘의 일기</h2>

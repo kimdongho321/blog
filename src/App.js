@@ -1,5 +1,6 @@
 import {useRef, useState} from "react";
-
+import DiaryEditor from "./component/DiaryEditor";
+import DiaryList from "./component/DiaryList";
 /* import logo from './logo.svg';
 import './App.css';
 import DiaryEditor from './component/DiaryEditor';
@@ -29,7 +30,7 @@ const dummyList = [
   }
 ] */
 
-import { useReducer, useState } from "react";
+
 
 function App() {
 
@@ -47,7 +48,7 @@ function App() {
       id : dataId.current
     }
     dataId.current += 1;
-    setData([ newItem,...data]);
+    setDate([ newItem,...data]);
   };
 
   return (
