@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const LifeCycle = () => {
-    const [count,setCount] = useState(0);
+    /* const [count,setCount] = useState(0);
     const [text,setText] = useState("");
 
     useEffect(()=>{
@@ -22,16 +22,25 @@ const LifeCycle = () => {
 
     useEffect(()=>{
         console.log(`text is update : ${text}`);
-    },[text])
+    },[text]) */
+
+    const UnmountTest = () =>{
+        return <div>UnmountTest Testing Component</div>
+    }
+
+    const [isVisible,setIsvisible] = useState(false);
+    const toggle = () => setIsvisible(!isVisible);
     return (
     <div>
-        <div>
+        {/* <div>
             {count}
             <button onClick={() => setCount(count+1)}>+</button>
         </div>
         <div>
             <input value={text} onChange={(e)=> setText(e.target.value)}></input>
-        </div>
+        </div> */}
+        <button onClick={toggle}>ON/OFF</button>
+        {isVisible && <UnmountTest/> }
     </div>
     )
 }
