@@ -25,6 +25,15 @@ const LifeCycle = () => {
     },[text]) */
 
     const UnmountTest = () =>{
+        
+        useEffect(()=>{
+            console.log("Mount!");
+
+            return()=>{
+                console.log("Unmount!");
+            };
+        },[]);
+
         return <div>UnmountTest Testing Component</div>
     }
 
