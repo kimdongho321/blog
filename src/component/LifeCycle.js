@@ -8,6 +8,17 @@ const LifeCycle = () => {
         console.log("Mount!");
     },[])
 
+    useEffect(()=>{
+        console.log("Update!");
+    })
+
+    useEffect(()=>{
+        console.log(`count is update : ${count}`);
+    },[count])
+
+    useEffect(()=>{
+        console.log(`text is update : ${text}`);
+    },[text])
     return (
     <div>
         <div>
