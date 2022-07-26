@@ -45,6 +45,7 @@ function App() {
     ).then((res) => res.json());
 
     const initData = res.slice(0, 20).map((it) => {
+      //slice = 0부터 20까지 데이터를 자를것임
       return {
         author: it.email,
         content: it.body,
