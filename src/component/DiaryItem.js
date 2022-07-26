@@ -58,7 +58,7 @@ const DiaryItem = ({onEdit,onRemove,author, content, created_date, emotion, id})
                 ) :(
                 <>
                     <button onClick={handleRemove}>삭제하기</button>
-                    <button onClick={toggleIsEdit}>수정하기</button>\
+                    <button onClick={toggleIsEdit}>수정하기</button>
                 </>
             )}
             
