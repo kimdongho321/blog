@@ -1,4 +1,4 @@
-import {useRef, useState} from "react";
+import {useRef, useState,useEffect} from "react";
 import DiaryEditor from "./component/DiaryEditor";
 import DiaryList from "./component/DiaryList";
 import LifeCycle from "./component/LifeCycle"
@@ -58,6 +58,10 @@ function App() {
     });
     setDate(initData);
   };
+
+  useEffect(() => {
+      getData();
+  }, []);
 
   const onCreate = (author,content,emotion) => {
     const create_date = new Date().getTime();
