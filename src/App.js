@@ -1,4 +1,4 @@
-import {useRef, useState,useEffect} from "react";
+import {useRef, useState,useEffect, useMemo} from "react";
 import DiaryEditor from "./component/DiaryEditor";
 import DiaryList from "./component/DiaryList";
 import LifeCycle from "./component/LifeCycle"
@@ -89,7 +89,7 @@ function App() {
     )
   }
 
-  const getDiaryAnalysis = () =>{
+  const getDiaryAnalysis = useMemo(() =>{
     console.log("일기 분석 시작");
 
     const goodCount = data.filter((it)=>it.emotion >= 3).length;
@@ -97,9 +97,11 @@ function App() {
     const goodRatio = (goodCount/data.length)*100;
 
     return{goodCount,badCount,goodRatio};
-  }
+  },[data.length]
+  //data.length가 변화할때만 return반환
+  );
 
-  const {goodCount,badCount,goodRatio} = getDiaryAnalysis();
+  const {goodCount,badCount,goodRatio} = getDiaryAnalysis;
 
   return (
     <div className="App">
