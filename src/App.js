@@ -2,6 +2,7 @@ import {useRef, useState,useEffect, useMemo} from "react";
 import DiaryEditor from "./component/DiaryEditor";
 import DiaryList from "./component/DiaryList";
 import LifeCycle from "./component/LifeCycle"
+import OptimizeTest from "./component/OptimizeTest"
 /* import logo from './logo.svg';
 import './App.css';
 import DiaryEditor from './component/DiaryEditor';
@@ -77,7 +78,6 @@ function App() {
   };
 
   const onRemove = (targetId) => {
-    console.log(`${targetId}가 삭제되었습니다.`)
     const newDiaryList = data.filter((it) => it.id !== targetId);
     setDate(newDiaryList);
   }
@@ -105,6 +105,7 @@ function App() {
 
   return (
     <div className="App">
+      <OptimizeTest />
       <LifeCycle/>
       <DiaryEditor onCreate={onCreate}/>
       <div>전체 일기 : {data.length}</div>
